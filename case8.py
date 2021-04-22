@@ -1,7 +1,7 @@
 '''
 Case-study №8 Fractals
-Developers:   Dokukina K. (45%),
-              Nazirova E. (25%),
+Developers:   Dokukina K. (%),
+              Nazirova E. (%)
 '''
 
 from turtle import *
