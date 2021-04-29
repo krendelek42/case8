@@ -20,7 +20,21 @@ def square(a):
     forward(a / 8)
     return square(a * 0.9)
 
-'''def tree():'''
+def tree(h, an):
+    '''This fractal draws a binary tree recursively.
+                h - tree height
+                an - angle value'''
+    if h < 10:
+        return
+    else:
+        dh = h//3
+        forward(h)
+        left(an)
+        tree(h - dh ,an)
+        right(2*an)
+        tree(h - dh,an)
+        left(an)
+        backward(h)
 
 def branch(n, size):
     '''This fractal draws a branch recursively.
@@ -163,7 +177,16 @@ def main():
                 down()
                 square(a)
                 mainloop()
-            '''if n == 2:'''
+            if n == 2:
+                h = int(input('Введите высоту дерева:'))
+                an = int(input('Введите угол отклонения ветвей:'))
+                speed(1000)
+                up()
+                goto(0, -200)
+                left(90)
+                down()
+                tree(h, an)
+                mainloop()
             if n == 3:
                 n = int(input('Глубина рекурсии:'))
                 a = int(input('Длина стороны:'))
@@ -203,7 +226,7 @@ def main():
                 a = int(input('Длина стороны:'))
                 minkov(n, a)
                 mainloop()
-            if n == 9:
+            if n == 7:
                 speed(1000)
                 up()
                 goto(-100, 0)
