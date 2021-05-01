@@ -155,7 +155,38 @@ def levi(order, size):
         levi(order - 1, size / 2)
         left(45)
 
-'''def drago()'''
+def dragon(a):
+    '''This fractal draws a dragon recursively.
+            n  - recursion depth'''
+
+    if a == 0:
+        turtle.forward(100)
+        return
+
+    depth = a
+    lenght = 100 // depth
+
+    def dragon_right(depth):
+        if depth == 0:
+            return
+
+        dragon_right(depth - 1)
+        turtle.right(90)
+        dragon_left(depth - 1)
+        turtle.forward(lenght)
+
+    def dragon_left(depth):
+        if depth == 0:
+            return
+
+        turtle.forward(lenght)
+        dragon_right(depth - 1)
+        turtle.left(90)
+        dragon_left(depth - 1)
+
+    turtle.forward(lenght)
+    dragon_right(depth)
+
 
 def main():
     '''This function is basic.The menu of fractals is displayed here, from which the tester selects one fractal
@@ -266,7 +297,15 @@ def main():
                 n = int(input('Глубина рекурсии:'))
                 a = int(input('Длина стороны:'))
                 levi(n, a)
-            '''if n == 11:'''
+            if n == 11:
+                a = int(input('Глубина рекурсии:'))
+
+                turtle.screensize(10000, 10000)
+                turtle.left(45 * (a % 8))
+
+                dragon(a)
+                turtle.done()
+
         except ValueError:
             print(' Введенное "{}" не является числом.'.format(n))
         else:
