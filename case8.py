@@ -20,7 +20,21 @@ def square(a):
     forward(a / 8)
     return square(a * 0.9)
 
-'''def tree():'''
+def tree(h, an):
+    '''This fractal draws a binary tree recursively.
+                h - tree height
+                an - angle value'''
+    if h < 10:
+        return
+    else:
+        dh = h//3
+        forward(h)
+        left(an)
+        tree(h - dh ,an)
+        right(2*an)
+        tree(h - dh,an)
+        left(an)
+        backward(h)
 
 def branch(n, size):
     '''This fractal draws a branch recursively.
@@ -141,7 +155,38 @@ def levi(order, size):
         levi(order - 1, size / 2)
         left(45)
 
-'''def drago()'''
+def dragon(a):
+    '''This fractal draws a dragon recursively.
+            a  - recursion depth'''
+
+    if a == 0:
+        turtle.forward(100)
+        return
+
+    depth = a
+    lenght = 100 // depth
+
+    def dragon_right(depth):
+        if depth == 0:
+            return
+
+        dragon_right(depth - 1)
+        turtle.right(90)
+        dragon_left(depth - 1)
+        turtle.forward(lenght)
+
+    def dragon_left(depth):
+        if depth == 0:
+            return
+
+        turtle.forward(lenght)
+        dragon_right(depth - 1)
+        turtle.left(90)
+        dragon_left(depth - 1)
+
+    turtle.forward(lenght)
+    dragon_right(depth)
+
 
 def main():
     '''This function is basic.The menu of fractals is displayed here, from which the tester selects one fractal
@@ -163,7 +208,16 @@ def main():
                 down()
                 square(a)
                 mainloop()
-            '''if n == 2:'''
+            if n == 2:
+                h = int(input('Введите высоту дерева:'))
+                an = int(input('Введите угол отклонения ветвей:'))
+                speed(1000)
+                up()
+                goto(0, -200)
+                left(90)
+                down()
+                tree(h, an)
+                mainloop()
             if n == 3:
                 n = int(input('Глубина рекурсии:'))
                 a = int(input('Длина стороны:'))
@@ -203,7 +257,7 @@ def main():
                 a = int(input('Длина стороны:'))
                 minkov(n, a)
                 mainloop()
-            if n == 9:
+            if n == 7:
                 speed(1000)
                 up()
                 goto(-100, 0)
@@ -243,7 +297,15 @@ def main():
                 n = int(input('Глубина рекурсии:'))
                 a = int(input('Длина стороны:'))
                 levi(n, a)
-            '''if n == 11:'''
+            if n == 11:
+                a = int(input('Глубина рекурсии:'))
+
+                turtle.screensize(10000, 10000)
+                turtle.left(45 * (a % 8))
+
+                dragon(a)
+                turtle.done()
+
         except ValueError:
             print(' Введенное "{}" не является числом.'.format(n))
         else:
