@@ -298,13 +298,14 @@ def main():
                 a = int(input('Длина стороны:'))
                 levi(n, a)
             if n == 11:
+                speed(1000)
+                up()
+                goto(-100, 0)
                 a = int(input('Глубина рекурсии:'))
-
-                turtle.screensize(10000, 10000)
-                turtle.left(45 * (a % 8))
-
+                down()
+                screensize(10000, 10000)
+                left(45 * (a % 8))
                 dragon(a)
-                turtle.done()
 
         except ValueError:
             print(' Введенное "{}" не является числом.'.format(n))
