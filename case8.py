@@ -157,7 +157,7 @@ def levi(order, size):
 
 def dragon(a):
     '''This fractal draws a dragon recursively.
-            n  - recursion depth'''
+            a  - recursion depth'''
 
     if a == 0:
         turtle.forward(100)
