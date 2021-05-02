@@ -300,7 +300,6 @@ def main():
             if n == 11:
                 speed(1000)
                 up()
-                goto(-100, 0)
                 a = int(input('Глубина рекурсии:'))
                 down()
                 screensize(10000, 10000)
